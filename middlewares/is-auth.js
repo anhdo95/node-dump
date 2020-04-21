@@ -13,7 +13,7 @@ module.exports = function(req, res, next) {
 
       if (decodedToken) {
         req.username = decodedToken.username
-        next()
+        return next()
       }  
     } catch {
       throw error
