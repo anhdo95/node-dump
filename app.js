@@ -5,7 +5,7 @@ const morgan = require('morgan')
 const productRoutes = require('./routes/product')
 const authRoutes = require('./routes/auth')
 const isAuth = require('./middlewares/is-auth')
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8080
 
 const app = express()
 
