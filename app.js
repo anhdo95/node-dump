@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const productRoutes = require('./routes/product')
 const authRoutes = require('./routes/auth')
 const isAuth = require('./middlewares/is-auth')
+const PORT = process.env.PORT || 8000
 
 const app = express()
 
@@ -14,7 +15,7 @@ app.use(bodyParser.json())
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
 app.use('/auth', authRoutes)
-app.use('/products', isAuth, productRoutes)
+app.use('/products'/* , isAuth */, productRoutes)
 app.use((error, req, res, next) => {
   if (error) {
     return res.status(error.statusCode || 500).json({
@@ -26,5 +27,5 @@ app.use((error, req, res, next) => {
   next()
 })
 
-app.listen(8000)
+app.listen(PORT, () => console.log(`Server running port ${PORT}`))
 
